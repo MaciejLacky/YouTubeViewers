@@ -3,21 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:YouTubeViewers.Components"
+             xmlns:local="clr-namespace:YouTubeViewers.Components" 
+             xmlns:custom="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1">
             <ListView BorderThickness="0" ItemsSource="{Binding YouTubeViewersListingItemsViewModels}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding UserName}"/>
-                        </Grid>
+                        <Border Padding="5 10" TextBlock.FontSize="16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding UserName}"/>
+                                <custom:DropdownMenu Grid.Column="1" Margin="10 0 0 0">
+                                    <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+                                        <StackPanel>
+                                            <StackPanel.Resources>
+                                                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Button">
+                                                                <Border Background="{TemplateBinding Background}" 
+                                                                    Padding="{TemplateBinding Padding}" 
+                                                                    Margin="{TemplateBinding Margin}"
+                                                                    CornerRadius="0">
+                                                                    <ContentPresenter/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <Button Content="Edit"/>
+                                            <Button Content="Delete"/>
+                                        </StackPanel>
+                                    </Border>
+                                </custom:DropdownMenu>
+                            </Grid>
+                        </Border>
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
