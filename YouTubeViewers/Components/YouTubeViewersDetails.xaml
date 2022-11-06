@@ -14,14 +14,14 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Maciej Lacky" FontSize="24" FontWeight="Bold"/>
+                <TextBlock Grid.Row="0" Text="{Binding UserName}" FontSize="24" FontWeight="Bold"/>
                 <Grid Grid.Row="1" Margin="0 20 0 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Is subscriber?" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Margin="20 0 0 0" Text="Yes" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0" Text="{Binding IsSubscribedDisplay}" FontWeight="Bold"/>
                 </Grid>
                 <Grid Grid.Row="2" Margin="0 20 0 0">
                     <Grid.ColumnDefinitions>
@@ -29,7 +29,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Is member?" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Margin="20 0 0 0" Text="Yes" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Margin="20 0 0 0" Text="{Binding IsMemberedDisplay}" FontWeight="Bold"/>
                 </Grid>
             </Grid>
         </Border>

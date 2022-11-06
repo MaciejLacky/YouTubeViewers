@@ -9,7 +9,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Border BorderBrush="{StaticResource BorderPrimary}" BorderThickness="1">
-            <ListView BorderThickness="0" ItemsSource="{Binding YouTubeViewersListingItemsViewModels}">
+            <ListView 
+                BorderThickness="0" 
+                ItemsSource="{Binding YouTubeViewersListingItemsViewModels}"
+                SelectedItem="{Binding SelectedYoutubeViewerListingViewModel}"
+                >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -42,10 +46,11 @@
                                                         </Setter.Value>
                                                     </Setter>
                                                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                                    <Setter Property="Padding" Value="20 10"/>
                                                 </Style>
                                             </StackPanel.Resources>
-                                            <Button Content="Edit"/>
-                                            <Button Content="Delete"/>
+                                            <Button Content="Edit" Command="{Binding EditCommand}"/>
+                                            <Button Content="Delete" Command="{Binding DeleteCommand}"/>
                                         </StackPanel>
                                     </Border>
                                 </custom:DropdownMenu>
